@@ -39,10 +39,10 @@ export class Order {
   shippingAddressSetAt: Date | null;
 
   @Column({ default: 'CART' })
-  status: 'CART' | 'SHIPPING_ADDRESS_SET' | 'PAID'; // Déclaration des valeurs possibles pour status
+  status: 'CART' | 'SHIPPING_ADDRESS_SET' | 'PAID';
 
   @Column({ nullable: true })
-  paidAt: Date | null; // Date de paiement de la commande
+  paidAt: Date | null; 
 
   getOrderTotalPrice(): number {
     return this.orderItems.reduce(
@@ -64,12 +64,12 @@ export class Order {
 
     this.shippingAddress = shippingAddress;
     this.shippingAddressSetAt = new Date();
-    this.status = 'SHIPPING_ADDRESS_SET'; // Mettre à jour le statut après la définition de l'adresse de livraison
+    this.status = 'SHIPPING_ADDRESS_SET'; 
   }
 
   markAsPaid(): void {
-    this.status = 'PAID'; // Marquer la commande comme payée
-    this.paidAt = new Date(); // Enregistrer la date de paiement
+    this.status = 'PAID'; 
+    this.paidAt = new Date(); 
   }
 }
 
