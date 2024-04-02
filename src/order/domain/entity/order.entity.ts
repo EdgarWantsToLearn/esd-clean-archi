@@ -12,6 +12,7 @@ export class Order {
   constructor(customerName: string, orderItems: OrderItem[]) {
     this.customerName = customerName;
     this.orderItems = orderItems;
+    this.status = 'CART'; // Par défaut, le statut est 'CART'
   }
 
   @CreateDateColumn()
@@ -37,6 +38,12 @@ export class Order {
   @Column({ nullable: true })
   shippingAddressSetAt: Date | null;
 
+  @Column({ default: 'CART' })
+  status: 'CART' | 'SHIPPING_ADDRESS_SET' | 'PAID'; // Déclaration des valeurs possibles pour status
+
+  @Column({ nullable: true })
+  paidAt: Date | null; // Date de paiement de la commande
+
   getOrderTotalPrice(): number {
     return this.orderItems.reduce(
       (totalPrice, orderItem) => totalPrice + orderItem.getTotalPrice(),
@@ -57,5 +64,12 @@ export class Order {
 
     this.shippingAddress = shippingAddress;
     this.shippingAddressSetAt = new Date();
+    this.status = 'SHIPPING_ADDRESS_SET'; // Mettre à jour le statut après la définition de l'adresse de livraison
+  }
+
+  markAsPaid(): void {
+    this.status = 'PAID'; // Marquer la commande comme payée
+    this.paidAt = new Date(); // Enregistrer la date de paiement
   }
 }
+
