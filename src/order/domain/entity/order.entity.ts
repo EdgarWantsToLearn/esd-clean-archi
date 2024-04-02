@@ -12,8 +12,9 @@ export class Order {
   constructor(customerName: string, orderItems: OrderItem[]) {
     this.customerName = customerName;
     this.orderItems = orderItems;
-    this.status = 'CART'; // Par défaut, le statut est 'CART'
+    this.status = 'CART'; 
   }
+
 
   @CreateDateColumn()
   createdAt: Date;
@@ -71,5 +72,6 @@ export class Order {
     this.status = 'PAID'; 
     this.paidAt = new Date(); 
   }
+
 }
 
