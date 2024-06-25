@@ -1,4 +1,4 @@
-import { PaidOrderService } from '../use-case/paid-order.service';
+import { PaidOrderService } from './paid-order.service';
 import { Order } from '../entity/order.entity';
 import { OrderRepositoryInterface } from '../port/order.repository.interface';
 import { OrderStatus } from '../enum/order-status.enum';

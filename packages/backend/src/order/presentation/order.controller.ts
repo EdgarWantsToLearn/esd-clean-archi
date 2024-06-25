@@ -11,7 +11,7 @@ import { Order } from '../domain/entity/order.entity';
 import { CreateOrderService } from '../domain/use-case/create-order.service';
 import { CreateOrderDto } from '../domain/dto/create-order.dto';
 import { GetOrdersService } from '../domain/use-case/get-orders.service';
-import { OrderPresenter } from 'src/order/presentation/order.presenter';
+import { OrderPresenter } from 'packages/backend/src/order/presentation/order.presenter';
 
 @Controller('/orders')
 export default class OrderController {

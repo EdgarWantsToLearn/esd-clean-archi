@@ -1,5 +1,5 @@
 import { OrderStatus } from '../enum/order-status.enum';
-import { SetOrderInvoicingAddressService } from '../use-case/set-order-invoicing-address.service';
+import { SetOrderInvoicingAddressService } from './set-order-invoicing-address.service';
 import { Order } from '../entity/order.entity';
 import { OrderRepositoryInterface } from '../port/order.repository.interface';
 
