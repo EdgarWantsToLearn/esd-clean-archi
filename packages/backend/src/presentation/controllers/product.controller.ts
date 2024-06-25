@@ -17,7 +17,7 @@ export class ProductController {
   @Post()
   async createProduct(@Body() createProductDto: CreateProductDto): Promise<Product> {
     const product = new Product(
-      Number(createProductDto.id),  // Assurez-vous que c'est bien un nombre
+      Number(createProductDto.id),  
       new ProductName(createProductDto.name),
       createProductDto.price,
       createProductDto.description, 
@@ -30,7 +30,7 @@ export class ProductController {
 
   @Delete(':productId')
   async deleteProduct(@Param('productId') productId: string): Promise<void> {
-    await this.deleteProductUseCase.execute(Number(productId)); // Convertit en nombre
+    await this.deleteProductUseCase.execute(Number(productId)); 
   }
 
   @Get()

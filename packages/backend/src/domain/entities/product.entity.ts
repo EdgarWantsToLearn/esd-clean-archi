@@ -1,4 +1,3 @@
-// packages/backend/src/domain/entities/product.entity.ts
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { ProductName } from '../../domain/value-objects/product-name.vo';
 

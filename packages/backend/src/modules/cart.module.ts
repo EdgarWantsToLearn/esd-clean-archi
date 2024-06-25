@@ -1,4 +1,3 @@
-// packages/backend/src/modules/cart.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CartController } from '../presentation/controllers/cart.controller';

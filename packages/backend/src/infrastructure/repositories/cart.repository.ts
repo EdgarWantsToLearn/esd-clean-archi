@@ -1,5 +1,3 @@
-// src/infrastructure/repositories/cart.repository.ts
-
 import { Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';

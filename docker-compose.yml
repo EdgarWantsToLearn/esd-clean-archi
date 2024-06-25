@@ -2,7 +2,7 @@ version: '3'
 
 services:
 
-  # Backend Nest.js
+  
   nestjs:
     build:
       context: ./packages/backend
