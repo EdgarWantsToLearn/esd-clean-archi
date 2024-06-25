@@ -17,10 +17,10 @@ export class ProductController {
   @Post()
   async createProduct(@Body() createProductDto: CreateProductDto): Promise<Product> {
     const product = new Product(
-      createProductDto.id,  // Assurez-vous que c'est bien un nombre
+      Number(createProductDto.id),  // Assurez-vous que c'est bien un nombre
       new ProductName(createProductDto.name),
       createProductDto.price,
-      createProductDto.description,
+      createProductDto.description, 
       createProductDto.image,
       createProductDto.color
     );
@@ -30,7 +30,7 @@ export class ProductController {
 
   @Delete(':productId')
   async deleteProduct(@Param('productId') productId: string): Promise<void> {
-    await this.deleteProductUseCase.execute(Number(productId)); 
+    await this.deleteProductUseCase.execute(Number(productId)); // Convertit en nombre
   }
 
   @Get()
@@ -38,4 +38,3 @@ export class ProductController {
     return this.productService.getAllProducts();
   }
 }
-

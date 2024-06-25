@@ -1,14 +1,12 @@
+// packages/backend/src/app.module.ts
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { OrderModule } from './order/order.module';
+import { CartModule } from './modules/cart.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
-import { Product } from './domain/entities/product.entity';
-import { ProductService } from './application/services/product.service';
-import { ProductController } from './interfaces/controllers/product.controller';
-import { ProductRepository } from './infrastructure/repositories/product.repository';
+import { ProductModule } from './modules/product.module';
 
 @Module({
   imports: [
@@ -20,20 +18,15 @@ import { ProductRepository } from './infrastructure/repositories/product.reposit
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      entities: [Product], // Ajoutez vos entités ici
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
       autoLoadEntities: true,
     }),
-    TypeOrmModule.forFeature([Product]), // Ajoutez cette ligne pour enregistrer l'entité Product
-    OrderModule,
+    CartModule,
+    ProductModule,
     EventEmitterModule.forRoot(),
   ],
-  controllers: [AppController, ProductController], // Ajoutez vos contrôleurs ici
-  providers: [
-    AppService,
-    ProductService,
-    { provide: 'IProductRepository', useClass: ProductRepository }, // Ajoutez votre repository ici
-  ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
-
